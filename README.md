@@ -39,3 +39,16 @@ Depending on applicable law and the circumstances, you may have rights to reques
 ## Changes
 
 This notice may be updated when the App or its data practices change. The date above identifies the latest update.
+
+
+## Release update — 4 November 2026
+
+This section describes the 4 November release candidate and supersedes conflicting descriptions above for that version. Earlier installed versions may retain the previous behavior.
+
+The updated review writes a generic internal acknowledgement with an installation-bound marker, without copying the reference issue key or comparison text. The ordinary comparison workflow does not persist a personal profile.
+
+An indexed personal-data subsystem maintains an account directory and structured records in Forge KVS. Account IDs, retrieval times and any registered profile fields remain until erased or refreshed. The scheduled process reports indexed accounts to Atlassian and handles closed/updated responses by atomically erasing the indexed record and directory entry and checking absence by direct reads. Administrators can request indexed-account erasure. Rate-limit delays are respected and ambiguous failures require reconciliation.
+
+Eligible expired structured historical preview records can be migrated atomically into that directory, removing the original copy. Records with arbitrary content, active previews or unknown schemas require further review; migration does not silently discard them. The indexed erasure result applies to that indexed storage only. Legacy subject coverage remains under review and its automated reporting remains restricted. The app does not claim automatic erasure of all historical content, other installations, Jira notes, platform logs or backups.
+
+For a privacy request, contact luxors09@gmail.com. We assess identity and authority, inspect the relevant installation and legacy matches, perform and verify supported actions, coordinate remaining work with the site administrator or Atlassian, and explain any outstanding data or retention limits. Duplicate-prevention records remain identifiable in context and have no automatic expiry.
