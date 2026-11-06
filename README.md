@@ -1,6 +1,6 @@
 # OpsGuardian Forge Privacy Notice
 
-Last updated: 1 November 2026
+Last updated: 6 November 2026
 
 ## Who provides the app
 
@@ -22,7 +22,7 @@ The current implementation does not save the comparison or the requesting user's
 
 To reduce duplicate writes, Forge storage retains a hashed key derived from the issue pair and a status or Jira comment receipt. These values are not necessarily anonymous in context. The App sets no automatic expiry on these duplicate-prevention records. Older versions may have created preview or other privacy-related records; handling of historical records is under review and may depend on the installation and Atlassian's retention policies.
 
-If the user chooses **Post internal note**, the App writes an internal Jira Service Management comment containing the reference issue key and a marker. The note does not copy the comparison text. The issue key reveals that a reference work item exists; access to that item is controlled by the Jira site. The note is stored in the organization's Jira site and is subject to that site's permissions and retention settings. Deleting or uninstalling the App does not itself delete Jira comments.
+If the user chooses **Post internal note**, the current App writes an internal Jira Service Management comment containing a generic acknowledgement and an installation-bound marker. It does not copy the reference issue key or comparison text. Older versions may have written a different note, including a reference issue key. The note is stored in the organization's Jira site and is subject to that site's permissions and retention settings. Deleting or uninstalling the App does not itself delete Jira comments.
 
 Forge and Jira may generate service logs and maintain backups under Atlassian's policies. The App's manifest does not declare external network egress. The App uses Atlassian APIs and Forge-hosted storage; it does not send the comparison to an external AI service as part of its current workflow.
 
@@ -41,13 +41,13 @@ Depending on applicable law and the circumstances, you may have rights to reques
 This notice may be updated when the App or its data practices change. The date above identifies the latest update.
 
 
-## Release update — 4 November 2026
+## Additional details on indexed and historical data
 
-This section describes the 4 November release candidate and supersedes conflicting descriptions above for that version. Earlier installed versions may retain the previous behavior.
+The current production release includes the indexed-data and historical-record safeguards described below. Earlier versions may have behaved differently and historical records remain under review.
 
 The updated review writes a generic internal acknowledgement with an installation-bound marker, without copying the reference issue key or comparison text. The ordinary comparison workflow does not persist a personal profile.
 
-An indexed personal-data subsystem maintains an account directory and structured records in Forge KVS. Account IDs, retrieval times and any registered profile fields remain until erased or refreshed. The scheduled process reports indexed accounts to Atlassian and handles closed/updated responses by atomically erasing the indexed record and directory entry and checking absence by direct reads. Administrators can request indexed-account erasure. Rate-limit delays are respected and ambiguous failures require reconciliation.
+An indexed personal-data subsystem maintains an account directory and structured records in Forge KVS. Account IDs, retrieval times and any registered profile fields remain until erased or refreshed. The scheduled process reports indexed accounts to Atlassian and handles closed/updated responses by atomically erasing the indexed record and directory entry and checking absence by direct reads. Administrators can request indexed-account erasure. Rate-limit delays are respected and ambiguous failures require reconciliation. A non-default reporting interval returned by Atlassian currently requires manual review; automatic follow-up is not established for every response.
 
 Eligible expired structured historical preview records can be migrated atomically into that directory, removing the original copy. Records with arbitrary content, active previews or unknown schemas require further review; migration does not silently discard them. The indexed erasure result applies to that indexed storage only. Legacy subject coverage remains under review and its automated reporting remains restricted. The app does not claim automatic erasure of all historical content, other installations, Jira notes, platform logs or backups.
 
